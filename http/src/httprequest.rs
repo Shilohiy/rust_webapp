@@ -41,7 +41,7 @@ pub enum Resource {
 }
 
 #[derive(Debug)]
-pub struct httpRequest {
+pub struct HttpRequest {
     pub method: Method,
     pub version: Version,
     pub resource: Resource,
@@ -49,7 +49,7 @@ pub struct httpRequest {
     pub msg_body: String,
 }
 
-impl From<String> for httpRequest {
+impl From<String> for HttpRequest {
     fn from(req: String) -> Self {
         let mut parsed_method = Method::Uninitialized;
         let mut parsed_version = Version::V1_1;
@@ -74,7 +74,7 @@ impl From<String> for httpRequest {
             }
         }
 
-        httpRequest {
+        HttpRequest {
             method: parsed_method,
             version: parsed_version,
             resource: parsed_resource,
