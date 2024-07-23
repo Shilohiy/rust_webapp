@@ -68,6 +68,7 @@ impl From<String> for httpRequest {
                 parsed_headers.insert(key, value);
             } else if line.len() == 0 {
                 // Empty line indicates the end of the headers
+                //Empty instructions,delivered to the operating system, are ignored.
             } else {
                 parsed_msg_body = line;
             }
