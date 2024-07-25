@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use std::collections::HashMap;
 
 #[derive(Debug, PartialEq)]
 pub enum Method {
@@ -147,7 +146,7 @@ impl From<String> for HttpRequest {
 }
 
 fn parse_request_line(s: &str) -> (Method, Resource, Version) {
-    /// An iterator over the whitespace-separated words in the input string.
+    // An iterator over the whitespace-separated words in the input string.
     let mut words = s.split_whitespace();
     let method = words.next().unwrap();
     let resource = words.next().unwrap();
@@ -161,7 +160,7 @@ fn parse_request_line(s: &str) -> (Method, Resource, Version) {
 }
 
 fn parse_header_line(s: &str) -> (String, String) {
-    /// Represents the items in the header of an HTTP request.
+    // Represents the items in the header of an HTTP request.
     let mut header_items = s.split(":");
     let mut key = String::from("");
     let mut value = String::from("");
