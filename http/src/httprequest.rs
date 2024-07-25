@@ -20,7 +20,7 @@ pub enum Method {
 /// # Examples
 ///
 /// ```
-/// use http::Method;
+/// use http::httprequest::Method;
 ///
 /// let method: Method = "GET".into();
 /// assert_eq!(method, Method::Get);
@@ -61,7 +61,7 @@ pub enum Version {
 /// # Examples
 ///
 /// ```
-/// use http::Version;
+/// use http::httprequest::Version;
 ///
 /// let version: Version = "HTTP/1.1".into();
 /// assert_eq!(version, Version::V1_1);
