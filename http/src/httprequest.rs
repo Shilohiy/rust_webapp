@@ -147,6 +147,7 @@ impl From<String> for HttpRequest {
 
 fn parse_request_line(s: &str) -> (Method, Resource, Version) {
     // An iterator over the whitespace-separated words in the input string.
+    // Example："GET /index.html HTTP/1.1" to be ["GET", "/index.html", "HTTP/1.1"]
     let mut words = s.split_whitespace();
     let method = words.next().unwrap();
     let resource = words.next().unwrap();
@@ -161,6 +162,8 @@ fn parse_request_line(s: &str) -> (Method, Resource, Version) {
 
 fn parse_header_line(s: &str) -> (String, String) {
     // Represents the items in the header of an HTTP request.
+    // Example: "Host: localhost:3000" to be ["Host", "localhost:3000"]
+    // to slice in ":"
     let mut header_items = s.split(":");
     let mut key = String::from("");
     let mut value = String::from("");
