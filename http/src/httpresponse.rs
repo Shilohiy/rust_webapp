@@ -122,6 +122,7 @@ impl<'a> HttpResponse<'a> {
     }
 }
 
+// cargo test -p http
 #[cfg(test)]
 mod tests {
     use super::*;
