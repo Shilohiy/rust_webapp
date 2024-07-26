@@ -45,7 +45,7 @@ impl From<&str> for Method {
 pub enum Version {
     V1_1,
     V2_0,
-    V3_0,
+    // V3_0,
     Uninitialized,
 }
 
@@ -78,7 +78,7 @@ impl From<&str> for Version {
         match s {
             "HTTP/1.1" => Version::V1_1,
             "HTTP/2.0" => Version::V2_0,
-            "HTTP/3.0" => Version::V3_0,
+            // "HTTP/3.0" => Version::V3_0,
             _ => Version::Uninitialized,
         }
     }
