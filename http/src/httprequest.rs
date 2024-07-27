@@ -87,7 +87,7 @@ impl From<&str> for Version {
 #[derive(Debug, PartialEq)]
 pub enum Resource {
     Path(String),
-    Uninitialized,
+    // Uninitialized,
 }
 
 #[derive(Debug)]
@@ -115,10 +115,10 @@ pub struct HttpRequest {
 impl From<String> for HttpRequest {
     fn from(req: String) -> Self {
         let mut parsed_method = Method::Uninitialized;
-        let mut parsed_version = Version::Uninitialized;
-        let mut parsed_resource = Resource::Uninitialized;
+        let mut parsed_version = Version::V1_1;
+        let mut parsed_resource = Resource::Path("".to_string());
         let mut parsed_headers = HashMap::new();
-        let mut parsed_msg_body = String::new();
+        let mut parsed_msg_body = "";
 
         for line in req.lines() {
             if line.contains("HTTP") {
@@ -129,11 +129,11 @@ impl From<String> for HttpRequest {
             } else if line.contains(":") {
                 let (key, value) = parse_header_line(line);
                 parsed_headers.insert(key, value);
-            } else if line.is_empty() {
+            } else if line.len() == 0 {
                 // Empty line indicates the end of the headers
                 // Empty instructions, delivered to the operating system, are ignored.
             } else {
-                parsed_msg_body = line.to_string();
+                parsed_msg_body = line;
             }
         }
 
@@ -142,7 +142,7 @@ impl From<String> for HttpRequest {
             version: parsed_version,
             resource: parsed_resource,
             headers: parsed_headers,
-            msg_body: parsed_msg_body,
+            msg_body: parsed_msg_body.to_string(),
         }
     }
 }
