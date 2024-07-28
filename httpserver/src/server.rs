@@ -36,7 +36,8 @@ impl<'a> Server<'a> {
             let mut stream = stream.unwrap();
             println!("Connection established!");
 
-            let mut read_buffer = [0; 200];
+            let mut read_buffer = [0; 1024];
+            //println!("read_buffer:{:?}", read_buffer);
             stream.read(&mut read_buffer).unwrap();
 
             let req: HttpRequest = String::from_utf8(read_buffer.to_vec()).unwrap().into();

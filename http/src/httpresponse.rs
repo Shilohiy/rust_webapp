@@ -40,7 +40,7 @@ impl<'a> From<HttpResponse<'a>> for String {
     fn from(res: HttpResponse) -> String {
         let res1 = res.clone();
         format!(
-            "{} {} {}\r\n{}Content-Lenth: {}\r\n{}",
+            "{} {} {}\r\n{}Content-Length: {}\r\n\r\n{}",
             &res1.version(),
             &res1.status_code(),
             &res1.status_text(),
@@ -109,7 +109,7 @@ impl<'a> HttpResponse<'a> {
         let mut header_string: String = "".into();
         // iterate over the headers and add them to the header string
         for (k, v) in map.iter() {
-            header_string = format!("{}{}: {}\r\n", header_string, k, v);
+            header_string = format!("{}{}:{}\r\n", header_string, k, v);
         }
         header_string
     }
