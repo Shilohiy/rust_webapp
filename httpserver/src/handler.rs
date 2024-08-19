@@ -94,7 +94,7 @@ impl Handler for StaticPageHandler {
             "health" => HttpResponse::new("200", None, Self::load_file("health.html")),
             path => match Self::load_file(path) {
                 Some(contents) => {
-                    println!("Serving file: {} with contents:\n{}", path, contents);
+                    // println!("Serving file: {} with contents:\n{}", path, contents);
                     let mut map: HashMap<&str, &str> = HashMap::new();
 
                     // Set the appropriate Content-Type header based on the file extension
