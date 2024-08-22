@@ -175,7 +175,7 @@ mod tests {
         };
         let http_string: String = response_expected.into();
         let actual_string =
-            "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\nContent-Lenth: 13\r\nHello, World!";
+            "HTTP/1.1 404 Not Found\r\nContent-Type:text/html\r\nContent-Length: 13\r\n\r\nHello, World!";
         assert_eq!(http_string, actual_string);
     }
 }
